@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding:utf-8
-#
-# 一键生成中文的威妥玛拼音表示 
-# 查找中国城市等地区的威妥玛表示
 #
 # Author: Shieber
 # Date: 2019.07.22
+# 
+# 一键生成中文的威妥玛拼音表示 
+# 查找中国城市等地区的威妥玛表示
+#
+
 import json
 from pypinyin import lazy_pinyin 
 
