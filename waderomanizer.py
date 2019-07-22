@@ -40,9 +40,17 @@ def character2pinyin(name):
 
     return fullnm 
 
-def districtSearcher():
+def districtSearcher(district):
     '''中国地名的威式拼音搜寻器'''
-    pass
+    if '0' == district:
+        with open('diming.json','r') as json_diming:
+            diming = json.load(json_diming)
+            for k,v in diming.items():
+                print(k,v)
+    else:
+        with open('diming.json','r') as json_diming:
+            diming = json.load(json_diming)
+            print(diming[district])
 
 def mainControl():
     '''功能选择器'''
@@ -54,7 +62,7 @@ def mainControl():
         print(fullname)
     else:
         district  = input('请输入地名(输入0显示所有地区威式注音表): ')
-        pass
+        districtSearcher(district)
 
 if __name__ == "__main__":
     mainControl()
