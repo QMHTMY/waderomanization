@@ -22,16 +22,16 @@ def character2pinyin(name):
             lastnm1 = namejson[pinyin[1]]
             lastnm2 = namejson[pinyin[2]]
             lastnm3 = namejson[pinyin[3]]
-            fullnm  = ''.join([surname,' ',lastnm1,' ',lastnm2,' ',lastnm3])
+            fullnm  = ''.join([surname.title(),' ',lastnm1,' ',lastnm2,' ',lastnm3])
         elif 3 == lgth:
             surname = namejson[pinyin[0]]
             lastnm1 = namejson[pinyin[1]]
             lastnm2 = namejson[pinyin[2]]
-            fullnm  = ''.join([surname,' ',lastnm1,' ',lastnm2])
+            fullnm  = ''.join([surname.title(),' ',lastnm1,' ',lastnm2])
         elif 2 == lgth:
             surname = namejson[pinyin[0]]
             lastnm  = namejson[pinyin[1]]
-            fullnm  = ''.join([surname,' ',lastnm])
+            fullnm  = ''.join([surname.title(),' ',lastnm])
         elif 1 == lgth:
             char    = namejson[pinyin[0]]
             fullnm  = char 
