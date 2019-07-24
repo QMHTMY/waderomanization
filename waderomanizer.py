@@ -15,8 +15,8 @@ def character2pinyin(name):
     pinyin = lazy_pinyin(name) 
     with open('pinyin.json','r') as json_pyin:
         namejson = json.load(json_pyin)
-        lgth = len(pinyin)
 
+        lgth = len(pinyin)
         if 4 == lgth:
             surname = namejson[pinyin[0]]
             lastnm1 = namejson[pinyin[1]]
@@ -36,7 +36,7 @@ def character2pinyin(name):
             char    = namejson[pinyin[0]]
             fullnm  = char 
         else:
-            fullnm  = None
+            fullnm  = '暂无'
 
     return fullnm 
 
