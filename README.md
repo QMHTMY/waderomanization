@@ -38,6 +38,6 @@
 
 
 # 依赖 #
-需要安装pypinyin，python版本为3，2没测试过，应该能用。
+需要安装pypinyin，python版本为3，2不建议使用，因为2020年python2寿命到期。
 
 $ sudo pip3 install pypinyin
