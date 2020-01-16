@@ -1,15 +1,12 @@
-------------
-# 兼容系统 #
-------------
-	Mac OS
-	Windows
-	Unix-like OS
---------
-# 描述 #
--------
+### 兼容系统 
+- Linux 
+- Mac OS
+- Windows
+
+### 描述 
 转换中文名为对应的威妥玛表达式或查询国内城市的邮政码表达式。
 
-# 使用示例 #
+### 使用示例 
 	$ python3  waderomanizer.py
 	  转换人名或查找地名[0,1]: 0
 	  请输入姓名: 习近平
@@ -43,7 +40,7 @@
 	  ......
 
 
-# 依赖 #
+### 依赖 
 需要安装pypinyin，python版本为3，2不建议使用，因为2020年python2寿命到期。
 
 $ sudo pip3 install pypinyin
