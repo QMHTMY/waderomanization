@@ -4,23 +4,9 @@
 #    Author: Shieber
 #    Date: 2019.07.22
 #
-#                             APACHE LICENSE
-#    Licensed under the Apache License, Version 2.0 (the "License"); you may
-#    not use this file except in compliance with the License. You may obtain
-#    a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-#    Unless required by applicable law or agreed to in writing, software
-#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-#    License for the specific language governing permissions and limitations
-#    under the License.
-#
-#                            Function Description
 #    一键生成中文的威妥玛拼音表示 
 #    查找中国城市等地区的威妥玛表示
 #
-#    Copyright 2019 
-#    All Rights Reserved!
-
 import json
 from pypinyin import lazy_pinyin 
 
@@ -68,7 +54,7 @@ def districtSearcher(district):
             diming = json.load(json_diming)
             print(diming[district])
 
-def mainControl():
+def main():
     '''功能选择器'''
     selector = input('转换人名或查找地名[0,1]: ')
 
@@ -81,4 +67,4 @@ def mainControl():
         districtSearcher(district)
 
 if __name__ == "__main__":
-    mainControl()
+    main()
