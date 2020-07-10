@@ -52,7 +52,10 @@ def districtSearcher(district):
     else:
         with open('diming.json','r') as json_diming:
             diming = json.load(json_diming)
-            print(diming[district])
+            try:
+                print(diming[district])
+            except KeyError:
+                print("无该地的威妥玛表示")
 
 def main():
     '''功能选择器'''
