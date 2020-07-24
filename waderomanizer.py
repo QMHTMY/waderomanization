@@ -3,70 +3,65 @@
 #
 #    Author: Shieber
 #    Date: 2019.07.22
+#    Modified: 2020.07.24
 #
-#    一键生成中文的威妥玛拼音表示 
-#    查找中国城市等地区的威妥玛表示
+#    1.一键生成中文名威妥玛拼音表示 
+#    2.查找中国城市等地区的威妥玛表示
 #
+
 import json
 from pypinyin import lazy_pinyin 
 
 def character2pinyin(name):
-    pinyin = lazy_pinyin(name) 
-    with open('pinyin.json','r') as json_pyin:
-        namejson = json.load(json_pyin)
+    #获取中文名拼音表示
+    py = lazy_pinyin(name) 
+    length = len(py)
 
-        lgth = len(pinyin)
-        if 4 == lgth:
-            surname = namejson[pinyin[0]]
-            surname = surname[0].title() + surname[1:]
-            lastnm1 = namejson[pinyin[1]]
-            lastnm2 = namejson[pinyin[2]]
-            lastnm3 = namejson[pinyin[3]]
-            fullnm  = ''.join([surname,' ',lastnm1,' ',lastnm2,' ',lastnm3])
-        elif 3 == lgth:
-            surname = namejson[pinyin[0]]
-            surname = surname[0].title() + surname[1:]
-            lastnm1 = namejson[pinyin[1]]
-            lastnm2 = namejson[pinyin[2]]
-            fullnm  = ''.join([surname,' ',lastnm1,' ',lastnm2])
-        elif 2 == lgth:
-            surname = namejson[pinyin[0]]
-            surname = surname[0].title() + surname[1:]
-            lastnm  = namejson[pinyin[1]]
-            fullnm  = ''.join([surname,' ',lastnm])
-        elif 1 == lgth:
-            char    = namejson[pinyin[0]]
-            fullnm  = char 
+    with open('pinyin.json','r') as jobj:
+        #拼音表
+        data = json.load(jobj)
+        
+        #名字有4,3,2,1个字共四种情况，逐字处理并拼接
+        nameparts = None
+        if 4 == length:
+            nameparts = [data[py[0]], data[py[1]], data[py[2]], data[py[3]] ]
+        elif 3 == length:
+            nameparts = [data[py[0]], data[py[1]], data[py[2]] ]
+        elif 2 == length:
+            nameparts = [data[py[0]], data[py[1]] ]
+        elif 1 == length:
+            fullnm  = data[py[0]].capitalize()
         else:
-            fullnm  = '暂无'
+            fullnm  = '名字长度不正确'
 
-    return fullnm 
+        if nameparts != None:
+            fullnm  = ' '.join(nameparts).capitalize() #首字母大写
 
-def districtSearcher(district):
+    print(fullnm)
+
+def districtSearcher(area):
     '''中国地名的威式拼音搜寻器'''
-    if '0' == district:
-        with open('diming.json','r') as json_diming:
-            diming = json.load(json_diming)
-            for k,v in diming.items():
+    if '0' == area:
+        with open('area.json','r') as jobj:
+            areaname = json.load(jobj)
+            for k,v in areaname.items():
                 print(k,v)
     else:
-        with open('diming.json','r') as json_diming:
-            diming = json.load(json_diming)
+        with open('area.json','r') as jobj:
+            areaname = json.load(jobj)
             try:
-                print(diming[district])
+                print(areaname[area])
             except KeyError:
                 print("无该地的威妥玛表示")
 
 def main():
     '''功能选择器'''
-    selector = input('转换人名或查找地名[0,1]: ')
-
-    if '0' == selector:
+    desire = input("转换人名[0]\n查找地名[1]: ")
+    if '0' == desire:
         name = input('请输入姓名: ')
-        fullname = character2pinyin(name)
-        print(fullname)
+        character2pinyin(name)
     else:
-        district  = input('请输入地名(输入0显示所有地区威式注音表): ')
+        district = input('请输入地名(输0显示所有地区威式注音表): ')
         districtSearcher(district)
 
 if __name__ == "__main__":
